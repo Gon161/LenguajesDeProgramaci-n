@@ -214,6 +214,51 @@ Un **operador** es un símbolo que realiza una operación sobre uno o más valor
 | `/` | División | `7 / 2` | `3` ⚠️ |
 | `%` | Módulo (residuo) | `7 % 2` | `1` |
 
+#### Programa de prueba: operadores aritméticos en consola
+
+```csharp
+int a = 17;
+int b = 5;
+
+Console.WriteLine("--------------");
+Console.WriteLine("-- Suma (+) --");
+Console.WriteLine("--------------");
+Console.WriteLine(a + b);       // → 22
+Console.WriteLine(a + 0);       // → 17
+Console.WriteLine(-a + b);      // → -12
+
+Console.WriteLine("---------------");
+Console.WriteLine("-- Resta (-) --");
+Console.WriteLine("---------------");
+Console.WriteLine(a - b);       // → 12
+Console.WriteLine(b - a);       // → -12
+Console.WriteLine(a - a);       // → 0
+
+Console.WriteLine("------------------------");
+Console.WriteLine("-- Multiplicación (*) --");
+Console.WriteLine("------------------------");
+Console.WriteLine(a * b);       // → 85
+Console.WriteLine(a * 0);       // → 0
+Console.WriteLine(a * -1);      // → -17
+
+Console.WriteLine("------------------");
+Console.WriteLine("-- División (/) --");
+Console.WriteLine("------------------");
+Console.WriteLine(a / b);       // → 3    (int / int → se pierden los decimales)
+Console.WriteLine(17.0 / 5);    // → 3.4  (double / int → double)
+Console.WriteLine((double)a / b); // → 3.4
+
+Console.WriteLine("----------------");
+Console.WriteLine("-- Módulo (%) --");
+Console.WriteLine("----------------");
+Console.WriteLine(a % b);       // → 2   (17 = 5 * 3 + 2)
+Console.WriteLine(10 % 2);      // → 0   (10 es par)
+Console.WriteLine(7 % 2);       // → 1   (7 es impar)
+Console.WriteLine(3 % 5);       // → 3   (si el divisor es mayor, el residuo es el mismo número)
+```
+
+> Observa que `a / b` y `a % b` se complementan: `17 / 5 = 3` y `17 % 5 = 2`, porque `5 * 3 + 2 = 17`.
+
 #### División entera vs decimal
 
 ```csharp
@@ -295,6 +340,54 @@ Comparan dos valores y **siempre devuelven un `bool`** (`true` o `false`).
 | `>=` | Mayor o igual | `5 >= 5` | `true` |
 | `<=` | Menor o igual | `4 <= 3` | `false` |
 
+#### Programa de prueba: operadores relacionales en consola
+
+```csharp
+int a = 10;
+int b = 20;
+
+Console.WriteLine("----------------");
+Console.WriteLine("-- Igual (==) --");
+Console.WriteLine("----------------");
+Console.WriteLine(a == b);      // → False
+Console.WriteLine(a == 10);     // → True
+Console.WriteLine(b == 2 * a);  // → True
+
+Console.WriteLine("--------------------");
+Console.WriteLine("-- Distinto (!=) --");
+Console.WriteLine("--------------------");
+Console.WriteLine(a != b);      // → True
+Console.WriteLine(a != 10);     // → False
+
+Console.WriteLine("------------------");
+Console.WriteLine("-- Mayor que (>) --");
+Console.WriteLine("------------------");
+Console.WriteLine(a > b);       // → False
+Console.WriteLine(b > a);       // → True
+Console.WriteLine(a > 10);      // → False
+
+Console.WriteLine("------------------");
+Console.WriteLine("-- Menor que (<) --");
+Console.WriteLine("------------------");
+Console.WriteLine(a < b);       // → True
+Console.WriteLine(b < a);       // → False
+Console.WriteLine(a < 10);      // → False
+
+Console.WriteLine("-----------------------");
+Console.WriteLine("-- Mayor o igual (>=) --");
+Console.WriteLine("-----------------------");
+Console.WriteLine(a >= 10);     // → True
+Console.WriteLine(a >= b);      // → False
+
+Console.WriteLine("-----------------------");
+Console.WriteLine("-- Menor o igual (<=) --");
+Console.WriteLine("-----------------------");
+Console.WriteLine(a <= 10);     // → True
+Console.WriteLine(b <= a);      // → False
+```
+
+> Observa la diferencia entre `>` y `>=`: con `a = 10`, `a > 10` es `False` pero `a >= 10` es `True`. Es el error más común en los límites (por ejemplo, ¿un 70 aprueba?).
+
 ```csharp
 int calificacion = 75;
 bool aprobo = calificacion >= 70;   // true
@@ -337,6 +430,60 @@ Combinan expresiones booleanas.
 | true | false | false | true | false |
 | false | true | false | true | true |
 | false | false | false | false | true |
+
+#### Programa de prueba: tablas de verdad en consola
+
+Cada bloque imprime las cuatro combinaciones posibles de `false` y `true`, en el mismo orden: `(F,F)`, `(T,F)`, `(F,T)`, `(T,T)`.
+
+```csharp
+Console.WriteLine("---------");
+Console.WriteLine("-- AND --");
+Console.WriteLine("---------");
+Console.WriteLine(false & false);   // → False
+Console.WriteLine(true & false);    // → False
+Console.WriteLine(false & true);    // → False
+Console.WriteLine(true & true);     // → True
+
+Console.WriteLine("--------");
+Console.WriteLine("-- OR --");
+Console.WriteLine("--------");
+Console.WriteLine(false | false);   // → False
+Console.WriteLine(true | false);    // → True
+Console.WriteLine(false | true);    // → True
+Console.WriteLine(true | true);     // → True
+
+Console.WriteLine("---------");
+Console.WriteLine("-- NOT --");
+Console.WriteLine("---------");
+Console.WriteLine(!false);          // → True
+Console.WriteLine(!true);           // → False
+
+Console.WriteLine("----------------");
+Console.WriteLine("-- AND -> Not --");
+Console.WriteLine("----------------");
+Console.WriteLine(!(false & false)); // → True
+Console.WriteLine(!(true & false));  // → True
+Console.WriteLine(!(false & true));  // → True
+Console.WriteLine(!(true & true));   // → False
+
+Console.WriteLine("---------------");
+Console.WriteLine("-- OR -> Not --");
+Console.WriteLine("---------------");
+Console.WriteLine(!(false | false)); // → True
+Console.WriteLine(!(true | false));  // → False
+Console.WriteLine(!(false | true));  // → False
+Console.WriteLine(!(true | true));   // → False
+
+Console.WriteLine("---------");
+Console.WriteLine("-- XOR --");
+Console.WriteLine("---------");
+Console.WriteLine(false ^ false);   // → False
+Console.WriteLine(true ^ false);    // → True
+Console.WriteLine(false ^ true);    // → True
+Console.WriteLine(true ^ true);     // → False
+```
+
+> `&` y `|` dan el mismo resultado que `&&` y `||`, pero **siempre evalúan ambos lados**. `&&` y `||` se detienen en cuanto conocen el resultado (ver *Evaluación en cortocircuito* más abajo). En condiciones de `if` usa `&&` y `||`. `^` (XOR) es `true` cuando **exactamente uno** de los dos es `true`.
 
 ```csharp
 int edad = 20;

@@ -1,0 +1,16 @@
+# Configuración local de Claude Code (rutas de esta PC)
+.claude/settings.local.json
+
+# Compilación de los proyectos de .NET en practica/
+bin/
+obj/
+
+# Editores
+.vs/
+.vscode/
+*.user
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
