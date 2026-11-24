@@ -1,4 +1,25 @@
-# Unidad 2. Tipos de datos, variables y operadores
+# Unidad 2 — Tipos de datos, variables y operadores
+
+Todo programa trabaja con **datos**: los recibe (entrada), los transforma (proceso) y los muestra (salida). En esta unidad se ve **qué clase de datos** maneja C# (tipos), **dónde se guardan** (variables y constantes), **cómo se combinan** (operadores) y **cómo entran y salen** del programa a través de la consola.
+
+---
+
+## Índice
+
+- [2.1. Tipos de datos](#21-tipos-de-datos)
+- [2.2. Variables y constantes](#22-variables-y-constantes)
+- [2.3. Operadores](#23-operadores)
+   - [2.3.1. Operadores aritméticos](#231-operadores-aritméticos)
+   - [2.3.2. Operadores relacionales](#232-operadores-relacionales)
+   - [2.3.3. Operadores lógicos](#233-operadores-lógicos)
+- [2.4. Entrada y salida de datos](#24-entrada-y-salida-de-datos)
+   - [2.4.1. Entrada de datos por consola](#241-entrada-de-datos-por-consola)
+   - [2.4.2. Salida de datos por consola](#242-salida-de-datos-por-consola)
+- [2.5. Estructuras secuenciales](#25-estructuras-secuenciales)
+   - [2.5.1. Ejecución paso a paso](#251-ejecución-paso-a-paso)
+- [Resumen de la unidad](#resumen-de-la-unidad)
+
+---
 
 ## 2.1. Tipos de datos
 
@@ -763,7 +784,7 @@ Console.WriteLine($"[DEBUG] subtotal = {subtotal}");   // quitar al terminar
 
 ---
 
-## Resumen
+## Resumen de la unidad
 
 - Elige `int` para enteros, `double` para decimales, `decimal` para dinero, `bool` para sí/no, `char` para un carácter y `string` para texto.
 - Una **variable** puede cambiar de valor; una **constante** (`const`) no. Usa constantes para evitar "números mágicos".
@@ -772,3 +793,6 @@ Console.WriteLine($"[DEBUG] subtotal = {subtotal}");   // quitar al terminar
 - `Console.ReadLine()` siempre devuelve texto: conviértelo con `Parse` o, mejor, con `TryParse`.
 - Una estructura **secuencial** ejecuta entrada → proceso → salida en orden. La **prueba de escritorio** y el *debugger* permiten seguirla paso a paso.
 
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*

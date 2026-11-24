@@ -2,14 +2,18 @@
 
 Material de estudio del curso, organizado por unidades. Todos los ejemplos están escritos en **C#** (.NET) y pueden ejecutarse como aplicaciones de consola.
 
+**Autor:** Gon161 — Ingeniería en Software, Universidad Politécnica de Tecamac
+
+---
+
 ## Contenido
 
 | Unidad | Tema | Archivo |
 |---|---|---|
-| 1 | Fundamentos de programación estructurada | [unidad-1-fundamentos-programacion-estructurada.md](unidad-1-fundamentos-programacion-estructurada.md) |
-| 2 | Tipos de datos, variables y operadores | [unidad-2-tipos-datos-variables-operadores.md](unidad-2-tipos-datos-variables-operadores.md) |
-| 3 | Estructuras de control | [unidad-3-estructuras-de-control.md](unidad-3-estructuras-de-control.md) |
-| 4 | Estructuras de datos | [unidad-4-estructuras-de-datos.md](unidad-4-estructuras-de-datos.md) |
+| 1 | Fundamentos de programación estructurada: bits, binario, ASCII, algoritmos y buenas prácticas | [unidad-1-fundamentos-programacion-estructurada.md](unidad-1-fundamentos-programacion-estructurada.md) |
+| 2 | Tipos de datos, variables, operadores y entrada/salida por consola | [unidad-2-tipos-datos-variables-operadores.md](unidad-2-tipos-datos-variables-operadores.md) |
+| 3 | Estructuras de control: `if`, `switch`, ciclos, contadores y acumuladores | [unidad-3-estructuras-de-control.md](unidad-3-estructuras-de-control.md) |
+| 4 | Estructuras de datos: métodos de `string`, arreglos, búsqueda, ordenamiento y `List<T>` | [unidad-4-estructuras-de-datos.md](unidad-4-estructuras-de-datos.md) |
 
 El temario completo con todos los subtemas está en [lenguajes-programacion-completo.md](lenguajes-programacion-completo.md).
 
@@ -65,3 +69,7 @@ dotnet run
 - El código usa *top-level statements* (C# 9+), así que no siempre verás `class Program` ni `static void Main`.
 - Los comentarios `// →` indican lo que imprime la línea en consola.
 - Los bloques marcados con ⚠️ señalan errores comunes.
+
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*

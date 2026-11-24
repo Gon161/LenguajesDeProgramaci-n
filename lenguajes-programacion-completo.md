@@ -1,5 +1,9 @@
 # Lenguajes de Programación — Temario completo
 
+Índice general del temario. Cada unidad tiene su propio archivo con teoría, tablas y ejemplos en **C#**.
+
+---
+
 ## [Unidad 1. Fundamentos de programación estructurada](unidad-1-fundamentos-programacion-estructurada.md)
 
 - 1.1. Representación de la información
@@ -58,18 +62,26 @@
 
 ## [Unidad 4. Estructuras de datos](unidad-4-estructuras-de-datos.md)
 
-- 4.1. Arreglos (*arrays*)
-  - 4.1.1. Concepto de arreglo
-  - 4.1.2. Declaración e inicialización
-  - 4.1.3. Acceso a elementos
-  - 4.1.4. Recorrido de arreglos
-  - 4.1.5. Arreglos unidimensionales
-  - 4.1.6. Arreglos bidimensionales
-- 4.2. Operaciones con arreglos
-  - 4.2.1. Búsqueda básica
-  - 4.2.2. Ordenamiento básico
-- 4.3. Listas
-  - 4.3.1. Concepto de lista
-  - 4.3.2. Diferencias entre arreglo y lista
-  - 4.3.3. Operaciones básicas (agregar, eliminar, modificar)
-  - 4.3.4. Recorrido de listas
+- 4.1. Cadenas de caracteres (`string`)
+  - 4.1.1. Una cadena es una secuencia de caracteres
+  - 4.1.2. Métodos y propiedades principales
+  - 4.1.3. De cadena a arreglo y de vuelta
+- 4.2. Arreglos (*arrays*)
+  - 4.2.1. Concepto de arreglo
+  - 4.2.2. Declaración e inicialización
+  - 4.2.3. Acceso a elementos
+  - 4.2.4. Recorrido de arreglos
+  - 4.2.5. Arreglos unidimensionales
+  - 4.2.6. Arreglos bidimensionales
+- 4.3. Operaciones con arreglos
+  - 4.3.1. Búsqueda básica
+  - 4.3.2. Ordenamiento básico
+- 4.4. Listas
+  - 4.4.1. Concepto de lista
+  - 4.4.2. Diferencias entre arreglo y lista
+  - 4.4.3. Operaciones básicas (agregar, eliminar, modificar)
+  - 4.4.4. Recorrido de listas
+
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*

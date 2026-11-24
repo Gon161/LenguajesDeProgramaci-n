@@ -1,12 +1,39 @@
-# Unidad 4. Estructuras de datos
+# Unidad 4 — Estructuras de datos
 
 Hasta ahora cada variable guardaba **un solo valor**. Si necesitas las calificaciones de 40 alumnos, declarar `cal1`, `cal2`, …, `cal40` es impráctico. Una **estructura de datos** es una forma de organizar **muchos valores bajo un mismo nombre** para poder guardarlos, recorrerlos y procesarlos con ciclos.
 
 En esta unidad se ven las dos más básicas: **arreglos** y **listas**. Antes de entrar en ellas se repasan las **cadenas de texto** (`string`) y sus métodos. Una cadena es en el fondo una secuencia de caracteres con índices, igual que un arreglo, y muchos ejercicios con arreglos parten de un texto (por ejemplo, separar `"85,92,78"` en tres números).
 
-## 4.0. Cadenas de caracteres (`string`) y sus métodos
+---
 
-### 4.0.1. Una cadena es una secuencia de caracteres
+## Índice
+
+- [4.1. Cadenas de caracteres (`string`) y sus métodos](#41-cadenas-de-caracteres-string-y-sus-métodos)
+   - [4.1.1. Una cadena es una secuencia de caracteres](#411-una-cadena-es-una-secuencia-de-caracteres)
+   - [4.1.2. Métodos y propiedades principales](#412-métodos-y-propiedades-principales)
+   - [4.1.3. De cadena a arreglo y de vuelta](#413-de-cadena-a-arreglo-y-de-vuelta)
+- [4.2. Arreglos (*arrays*)](#42-arreglos-arrays)
+   - [4.2.1. Concepto de arreglo](#421-concepto-de-arreglo)
+   - [4.2.2. Declaración e inicialización](#422-declaración-e-inicialización)
+   - [4.2.3. Acceso a elementos](#423-acceso-a-elementos)
+   - [4.2.4. Recorrido de arreglos](#424-recorrido-de-arreglos)
+   - [4.2.5. Arreglos unidimensionales](#425-arreglos-unidimensionales)
+   - [4.2.6. Arreglos bidimensionales](#426-arreglos-bidimensionales)
+- [4.3. Operaciones con arreglos](#43-operaciones-con-arreglos)
+   - [4.3.1. Búsqueda básica](#431-búsqueda-básica)
+   - [4.3.2. Ordenamiento básico](#432-ordenamiento-básico)
+- [4.4. Listas](#44-listas)
+   - [4.4.1. Concepto de lista](#441-concepto-de-lista)
+   - [4.4.2. Diferencias entre arreglo y lista](#442-diferencias-entre-arreglo-y-lista)
+   - [4.4.3. Operaciones básicas (agregar, eliminar, modificar)](#443-operaciones-básicas-agregar-eliminar-modificar)
+   - [4.4.4. Recorrido de listas](#444-recorrido-de-listas)
+- [Resumen de la unidad](#resumen-de-la-unidad)
+
+---
+
+## 4.1. Cadenas de caracteres (`string`) y sus métodos
+
+### 4.1.1. Una cadena es una secuencia de caracteres
 
 Un `string` guarda texto como una **fila de caracteres** (`char`). Cada carácter tiene una **posición (índice)** que empieza en **0**, exactamente como en un arreglo:
 
@@ -65,7 +92,7 @@ Console.WriteLine(nombre);        // → ANA
 // nombre[0] = 'a';               // ⚠️ error de compilación: los caracteres son de solo lectura
 ```
 
-### 4.0.2. Métodos y propiedades principales
+### 4.1.2. Métodos y propiedades principales
 
 Se llaman con un punto después de la cadena: `cadena.Metodo(argumentos)`. Algunos son **estáticos** y se llaman sobre `string`: `string.Metodo(...)`.
 
@@ -158,7 +185,7 @@ if (resp == "si")
     Console.WriteLine("Continuando…");
 ```
 
-### 4.0.3. De cadena a arreglo y de vuelta
+### 4.1.3. De cadena a arreglo y de vuelta
 
 Estos métodos son el **puente** entre el texto y los arreglos de la siguiente sección:
 
@@ -196,7 +223,7 @@ Console.WriteLine(string.Join(" | ", calificaciones));                  // → 8
 ```csharp
 // Contar palabras: RemoveEmptyEntries ignora los espacios repetidos
 string texto = "  hola   mundo  cruel ";
-Console.WriteLine(texto.Split(' ').Length);                                     // → 11 ⚠️ cuenta los huecos vacíos
+Console.WriteLine(texto.Split(' ').Length);                                     // → 9 ⚠️ cuenta los huecos vacíos
 Console.WriteLine(texto.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length); // → 3
 ```
 
@@ -241,9 +268,9 @@ Console.WriteLine(esPalindromo);                // → True
 
 ---
 
-## 4.1. Arreglos (*arrays*)
+## 4.2. Arreglos (*arrays*)
 
-### 4.1.1. Concepto de arreglo
+### 4.2.1. Concepto de arreglo
 
 Un **arreglo** es una colección de elementos:
 
@@ -262,7 +289,7 @@ calificaciones
 
 Este arreglo tiene **longitud 5**; sus índices van del **0 al 4** (longitud − 1).
 
-### 4.1.2. Declaración e inicialización
+### 4.2.2. Declaración e inicialización
 
 #### Con tamaño (valores por defecto)
 
@@ -300,9 +327,9 @@ int n = int.Parse(Console.ReadLine()!);
 double[] notas = new double[n];       // el tamaño puede venir de una variable
 ```
 
-> ⚠️ Una vez creado, el arreglo **no puede crecer ni encogerse**. Si necesitas tamaño variable, usa una lista (sección 4.3).
+> ⚠️ Una vez creado, el arreglo **no puede crecer ni encogerse**. Si necesitas tamaño variable, usa una lista (sección 4.4).
 
-### 4.1.3. Acceso a elementos
+### 4.2.3. Acceso a elementos
 
 Se usa el nombre del arreglo y el índice entre corchetes `[ ]`.
 
@@ -324,7 +351,7 @@ Console.WriteLine(calificaciones[^1]);                          // → 90 (últi
 
 > ⚠️ Acceder a un índice fuera de rango (`calificaciones[5]` o `calificaciones[-1]`) lanza `IndexOutOfRangeException`. El último índice válido es siempre `Length - 1`.
 
-### 4.1.4. Recorrido de arreglos
+### 4.2.4. Recorrido de arreglos
 
 **Recorrer** un arreglo es visitar todos sus elementos, uno por uno, normalmente con un ciclo.
 
@@ -388,7 +415,7 @@ for (int i = datos.Length - 1; i >= 0; i--)
 // → 9 18 3 25 7 12
 ```
 
-### 4.1.5. Arreglos unidimensionales
+### 4.2.5. Arreglos unidimensionales
 
 Todos los ejemplos anteriores son **unidimensionales** (o **vectores**): una sola fila de elementos, un solo índice.
 
@@ -452,9 +479,9 @@ for (int i = 0; i < productos.Length; i++)
 | `a.Contains(x)` | ¿Contiene `x`? (requiere `System.Linq`) | `numeros.Contains(7)` |
 | `a.Sum()`, `a.Max()`, `a.Min()`, `a.Average()` | Cálculos (LINQ) | `numeros.Average()` |
 
-> Conviene saber programar a mano la búsqueda y el ordenamiento (sección 4.2) antes de usar estos atajos.
+> Conviene saber programar a mano la búsqueda y el ordenamiento (sección 4.3) antes de usar estos atajos.
 
-### 4.1.6. Arreglos bidimensionales
+### 4.2.6. Arreglos bidimensionales
 
 Un **arreglo bidimensional** (o **matriz**) organiza los datos en **filas y columnas**, como una tabla. Cada elemento se identifica con **dos índices**: `[fila, columna]`.
 
@@ -582,9 +609,9 @@ Console.WriteLine(escalonado[1].Length); // → 4
 
 ---
 
-## 4.2. Operaciones con arreglos
+## 4.3. Operaciones con arreglos
 
-### 4.2.1. Búsqueda básica
+### 4.3.1. Búsqueda básica
 
 Buscar es determinar **si un valor está** en el arreglo y, si está, **en qué posición**.
 
@@ -665,7 +692,7 @@ Console.WriteLine(posicion);     // → 4
 | Comparaciones (peor caso, 1 000 elementos) | 1 000 | ~10 |
 | Complejidad | Sencilla | Un poco más compleja |
 
-### 4.2.2. Ordenamiento básico
+### 4.3.2. Ordenamiento básico
 
 Ordenar es reacomodar los elementos de menor a mayor (ascendente) o de mayor a menor (descendente).
 
@@ -759,9 +786,9 @@ Array.Sort(nombres);                // alfabético: Ana, Luis, Sofía
 
 ---
 
-## 4.3. Listas
+## 4.4. Listas
 
-### 4.3.1. Concepto de lista
+### 4.4.1. Concepto de lista
 
 Una **lista** es una colección de elementos del mismo tipo que, a diferencia del arreglo, tiene **tamaño dinámico**: puede **crecer y encogerse** mientras el programa se ejecuta.
 
@@ -774,7 +801,7 @@ var precios = new List<decimal>();             // con var
 List<int> otra = [1, 2, 3];                    // expresión de colección (C# 12+)
 ```
 
-### 4.3.2. Diferencias entre arreglo y lista
+### 4.4.2. Diferencias entre arreglo y lista
 
 | Característica | Arreglo `T[]` | Lista `List<T>` |
 |---|---|---|
@@ -810,7 +837,7 @@ List<int> comoLista = new List<int>(arreglo);   // arreglo → lista
 int[] deVuelta = comoLista.ToArray();           // lista → arreglo
 ```
 
-### 4.3.3. Operaciones básicas (agregar, eliminar, modificar)
+### 4.4.3. Operaciones básicas (agregar, eliminar, modificar)
 
 #### Agregar
 
@@ -868,7 +895,7 @@ if (idx != -1)
 
 > Las expresiones `x => x > 10` se llaman **lambdas**: son funciones cortas que reciben `x` y devuelven una condición.
 
-### 4.3.4. Recorrido de listas
+### 4.4.4. Recorrido de listas
 
 Igual que con arreglos, con `for` (usando `Count`) o con `foreach`.
 
@@ -959,8 +986,10 @@ do
 
 ---
 
-## Resumen
+## Resumen de la unidad
 
+- Un **`string`** es una secuencia de `char` con índices desde `0` hasta `Length - 1`. Es **inmutable**: sus métodos (`Trim`, `ToUpper`, `Replace`, `Substring`…) regresan una cadena nueva que hay que guardar.
+- `Split` convierte texto en arreglo y `string.Join` hace lo contrario.
 - Un **arreglo** guarda muchos valores del mismo tipo bajo un nombre, con **tamaño fijo** e índices de `0` a `Length - 1`.
 - Se recorre con `for` (si necesitas el índice o modificar) o `foreach` (solo lectura).
 - Una **matriz** `[,]` tiene filas y columnas; se recorre con ciclos anidados usando `GetLength(0)` y `GetLength(1)`.
@@ -968,3 +997,6 @@ do
 - **Burbuja** compara vecinos; **selección** busca el menor. En la práctica se usa `Array.Sort`.
 - Una **lista** `List<T>` tiene **tamaño dinámico**: `Add`, `Insert`, `Remove`, `RemoveAt`, `Count`. Úsala cuando no sabes cuántos elementos habrá.
 
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*

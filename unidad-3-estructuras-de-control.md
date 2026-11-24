@@ -1,4 +1,4 @@
-# Unidad 3. Estructuras de control
+# Unidad 3 — Estructuras de control
 
 En la Unidad 2 todos los programas eran **secuenciales**: cada instrucción se ejecutaba exactamente una vez, de arriba hacia abajo. Las **estructuras de control** permiten cambiar ese flujo:
 
@@ -6,6 +6,33 @@ En la Unidad 2 todos los programas eran **secuenciales**: cada instrucción se e
 |---|---|---|
 | **Condicional** (decisión) | ¿Ejecuto esto o no? ¿Cuál de estos caminos tomo? | `if`, `if-else`, `switch` |
 | **Repetitiva** (ciclo) | ¿Cuántas veces repito esto? | `while`, `do-while`, `for` |
+
+---
+
+## Índice
+
+- [3.1. Estructuras condicionales](#31-estructuras-condicionales)
+   - [3.1.1. `if`](#311-if)
+   - [3.1.2. `if-else`](#312-if-else)
+   - [3.1.3. `switch`](#313-switch)
+   - [3.1.4. Diseño de algoritmos con decisiones](#314-diseño-de-algoritmos-con-decisiones)
+- [3.2. Estructuras repetitivas](#32-estructuras-repetitivas)
+   - [3.2.1. `while`](#321-while)
+   - [3.2.2. `do-while`](#322-do-while)
+   - [3.2.3. `for`](#323-for)
+- [3.3. Control de ciclos](#33-control-de-ciclos)
+   - [3.3.1. Uso de `break`](#331-uso-de-break)
+   - [3.3.2. Uso de `continue`](#332-uso-de-continue)
+- [3.4. Contadores y acumuladores](#34-contadores-y-acumuladores)
+   - [3.4.1. Uso de contadores](#341-uso-de-contadores)
+   - [3.4.2. Uso de acumuladores](#342-uso-de-acumuladores)
+- [3.5. Ciclos anidados](#35-ciclos-anidados)
+   - [3.5.1. Uso de ciclos dentro de ciclos](#351-uso-de-ciclos-dentro-de-ciclos)
+- [3.6. Integración de estructuras de control](#36-integración-de-estructuras-de-control)
+   - [3.6.1. Resolución de problemas combinando secuencia, decisión y repetición](#361-resolución-de-problemas-combinando-secuencia-decisión-y-repetición)
+- [Resumen de la unidad](#resumen-de-la-unidad)
+
+---
 
 ## 3.1. Estructuras condicionales
 
@@ -867,7 +894,7 @@ Console.WriteLine($"Mejor calificación: {mejorCal} ({mejorAlumno})");
 
 ---
 
-## Resumen
+## Resumen de la unidad
 
 - `if` ejecuta un bloque si la condición es verdadera; `if-else` elige entre dos caminos; `else if` encadena varios. El orden de las condiciones importa.
 - `switch` compara una variable contra valores exactos; en C# cada `case` termina con `break`.
@@ -877,3 +904,6 @@ Console.WriteLine($"Mejor calificación: {mejorCal} ({mejorAlumno})");
 - En un ciclo anidado, el interno se ejecuta completo por cada vuelta del externo.
 - Los programas reales combinan **secuencia + decisión + repetición**.
 
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*

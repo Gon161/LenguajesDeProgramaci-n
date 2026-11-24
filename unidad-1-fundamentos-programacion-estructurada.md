@@ -1,8 +1,33 @@
-# Unidad 1. Fundamentos de programación estructurada
+# Unidad 1 — Fundamentos de programación estructurada
 
 La **programación estructurada** es una forma de escribir programas usando solo tres tipos de bloques: **secuencia** (una instrucción tras otra), **decisión** (`if`, `switch`) y **repetición** (`while`, `for`). Con esas tres piezas se puede resolver cualquier problema computable, y el código resultante es más fácil de leer, probar y corregir.
 
 Antes de escribir código hay que entender dos cosas: **cómo guarda la computadora la información** y **cómo se describe la solución de un problema** (algoritmo).
+
+---
+
+## Índice
+
+- [1.1. Representación de la información](#11-representación-de-la-información)
+   - [1.1.1. Qué es un bit](#111-qué-es-un-bit)
+   - [1.1.2. Qué es un byte](#112-qué-es-un-byte)
+   - [1.1.3. Sistema binario (idea conceptual)](#113-sistema-binario-idea-conceptual)
+   - [1.1.4. Conversión básica de números decimales a binarios](#114-conversión-básica-de-números-decimales-a-binarios)
+   - [1.1.5. Conversión básica de palabras a código ASCII y binario](#115-conversión-básica-de-palabras-a-código-ascii-y-binario)
+- [1.2. Concepto de algoritmo](#12-concepto-de-algoritmo)
+   - [1.2.1. Definición de algoritmo](#121-definición-de-algoritmo)
+   - [1.2.2. Características de un algoritmo](#122-características-de-un-algoritmo)
+   - [1.2.3. Resolución de problemas computacionales](#123-resolución-de-problemas-computacionales)
+- [1.3. Buenas prácticas de programación](#13-buenas-prácticas-de-programación)
+   - [1.3.1. Legibilidad del código](#131-legibilidad-del-código)
+   - [1.3.2. Uso de comentarios](#132-uso-de-comentarios)
+   - [1.3.3. Pruebas básicas](#133-pruebas-básicas)
+- [1.4. Estructura básica de un programa](#14-estructura-básica-de-un-programa)
+   - [1.4.1. Inicio y fin de un programa](#141-inicio-y-fin-de-un-programa)
+   - [1.4.2. Secuencia de instrucciones](#142-secuencia-de-instrucciones)
+- [Resumen de la unidad](#resumen-de-la-unidad)
+
+---
 
 ## 1.1. Representación de la información
 
@@ -602,7 +627,7 @@ y = temp;       // y = 5
 
 ---
 
-## Resumen
+## Resumen de la unidad
 
 - Un **bit** vale 0 o 1; un **byte** son 8 bits y representa 256 valores. Con *n* bits hay 2ⁿ combinaciones.
 - El **binario** es base 2: cada posición vale el doble que la anterior (1, 2, 4, 8, 16…). Para convertir de decimal a binario se divide entre 2 y se leen los residuos de abajo hacia arriba.
@@ -611,3 +636,6 @@ y = temp;       // y = 5
 - Código legible = nombres claros, sangría, comentarios que explican el porqué y pruebas con casos normales, límite e inválidos.
 - Un programa tiene inicio y fin, y en su forma más simple ejecuta instrucciones **en secuencia**: entrada → proceso → salida.
 
+---
+
+*Universidad Politécnica de Tecamac — Ingeniería en Software*
