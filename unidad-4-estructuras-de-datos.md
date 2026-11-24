@@ -2,7 +2,244 @@
 
 Hasta ahora cada variable guardaba **un solo valor**. Si necesitas las calificaciones de 40 alumnos, declarar `cal1`, `cal2`, …, `cal40` es impráctico. Una **estructura de datos** es una forma de organizar **muchos valores bajo un mismo nombre** para poder guardarlos, recorrerlos y procesarlos con ciclos.
 
-En esta unidad se ven las dos más básicas: **arreglos** y **listas**.
+En esta unidad se ven las dos más básicas: **arreglos** y **listas**. Antes de entrar en ellas se repasan las **cadenas de texto** (`string`) y sus métodos. Una cadena es en el fondo una secuencia de caracteres con índices, igual que un arreglo, y muchos ejercicios con arreglos parten de un texto (por ejemplo, separar `"85,92,78"` en tres números).
+
+## 4.0. Cadenas de caracteres (`string`) y sus métodos
+
+### 4.0.1. Una cadena es una secuencia de caracteres
+
+Un `string` guarda texto como una **fila de caracteres** (`char`). Cada carácter tiene una **posición (índice)** que empieza en **0**, exactamente como en un arreglo:
+
+```
+texto = "Hola C#"
+
+índice:   0    1    2    3    4    5    6
+        ┌────┬────┬────┬────┬────┬────┬────┐
+        │ H  │ o  │ l  │ a  │    │ C  │ #  │      texto.Length = 7
+        └────┴────┴────┴────┴────┴────┴────┘
+          ▲                             ▲
+       texto[0]                     texto[6]  (último = Length - 1)
+```
+
+```csharp
+string texto = "Hola C#";
+
+Console.WriteLine(texto.Length);      // → 7 (el espacio también cuenta)
+Console.WriteLine(texto[0]);          // → H
+Console.WriteLine(texto[texto.Length - 1]); // → #
+Console.WriteLine(texto[^1]);         // → # (último, C# 8+)
+
+// Recorrer carácter por carácter (igual que un arreglo)
+for (int i = 0; i < texto.Length; i++)
+{
+    Console.WriteLine($"[{i}] = '{texto[i]}'");
+}
+
+foreach (char c in texto)
+{
+    Console.Write(c + "-");           // → H-o-l-a- -C-#-
+}
+```
+
+| Característica | Descripción |
+|---|---|
+| Secuencia de `char` | Cada posición guarda un solo carácter |
+| Índice base 0 | El primero es `s[0]` y el último `s[s.Length - 1]` |
+| `Length` | Número de caracteres, incluyendo espacios y signos |
+| **Inmutable** | Una vez creada, la cadena **no se puede modificar**: los métodos regresan una cadena **nueva** |
+| Comparación con `==` | Compara el **contenido** (distingue mayúsculas de minúsculas) |
+
+#### Inmutabilidad: el error más común
+
+Ningún método cambia la cadena original. Si no guardas el resultado, se pierde:
+
+```csharp
+string nombre = "ana";
+
+nombre.ToUpper();                 // ⚠️ calcula "ANA" pero no se guarda en ningún lado
+Console.WriteLine(nombre);        // → ana
+
+nombre = nombre.ToUpper();        // ✔ reasignar
+Console.WriteLine(nombre);        // → ANA
+
+// nombre[0] = 'a';               // ⚠️ error de compilación: los caracteres son de solo lectura
+```
+
+### 4.0.2. Métodos y propiedades principales
+
+Se llaman con un punto después de la cadena: `cadena.Metodo(argumentos)`. Algunos son **estáticos** y se llaman sobre `string`: `string.Metodo(...)`.
+
+#### Consultar (no cambian nada, solo responden)
+
+| Miembro | Qué hace | Ejemplo | Resultado |
+|---|---|---|---|
+| `Length` | Número de caracteres | `"Hola".Length` | `4` |
+| `[i]` | Carácter en la posición `i` | `"Hola"[1]` | `'o'` |
+| `IndexOf(x)` | Posición de la **primera** aparición (`-1` si no está) | `"banana".IndexOf('n')` | `2` |
+| `LastIndexOf(x)` | Posición de la **última** aparición | `"banana".LastIndexOf('n')` | `4` |
+| `Contains(x)` | ¿Contiene ese texto o carácter? | `"Hola mundo".Contains("mundo")` | `true` |
+| `StartsWith(x)` | ¿Empieza con…? | `"Programar".StartsWith("Pro")` | `true` |
+| `EndsWith(x)` | ¿Termina con…? | `"tarea.cs".EndsWith(".cs")` | `true` |
+
+#### Transformar (regresan una cadena nueva)
+
+| Miembro | Qué hace | Ejemplo | Resultado |
+|---|---|---|---|
+| `ToUpper()` / `ToLower()` | Todo a mayúsculas / minúsculas | `"Hola".ToUpper()` | `"HOLA"` |
+| `Trim()` | Quita espacios al inicio y al final | `"  hola  ".Trim()` | `"hola"` |
+| `TrimStart()` / `TrimEnd()` | Quita espacios de un solo lado | `"  hola".TrimStart()` | `"hola"` |
+| `Substring(inicio, largo)` | Extrae `largo` caracteres desde `inicio` | `"Programar".Substring(0, 3)` | `"Pro"` |
+| `Substring(inicio)` | Extrae desde `inicio` hasta el final | `"Programar".Substring(3)` | `"gramar"` |
+| `Replace(a, b)` | Reemplaza **todas** las apariciones de `a` por `b` | `"a-b-c".Replace("-", "/")` | `"a/b/c"` |
+| `Insert(pos, txt)` | Inserta texto en una posición | `"Hla".Insert(1, "o")` | `"Hola"` |
+| `Remove(pos)` / `Remove(pos, n)` | Elimina desde `pos` hasta el final, o `n` caracteres | `"Hola!!".Remove(4)` | `"Hola"` |
+| `PadLeft(n, c)` / `PadRight(n, c)` | Rellena con `c` hasta tener `n` caracteres | `"7".PadLeft(3, '0')` | `"007"` |
+
+#### Comparar y validar
+
+| Miembro | Qué hace | Ejemplo | Resultado |
+|---|---|---|---|
+| `==` | ¿Mismo contenido? (distingue mayúsculas) | `"Ana" == "ana"` | `false` |
+| `Equals(x, StringComparison.OrdinalIgnoreCase)` | ¿Mismo contenido ignorando mayúsculas? | `"Ana".Equals("ana", StringComparison.OrdinalIgnoreCase)` | `true` |
+| `string.Compare(a, b)` | Orden alfabético: `< 0` si `a` va antes, `0` si son iguales, `> 0` si va después | `string.Compare("Ana", "Luis")` | `< 0` |
+| `string.IsNullOrEmpty(s)` | ¿Es `null` o `""`? | `string.IsNullOrEmpty("")` | `true` |
+| `string.IsNullOrWhiteSpace(s)` | ¿Es `null`, `""` o solo espacios? | `string.IsNullOrWhiteSpace("   ")` | `true` |
+
+#### Programa de prueba: métodos de `string` en consola
+
+```csharp
+string frase = "  Lenguajes de Programación  ";
+
+string limpia = frase.Trim();
+Console.WriteLine($"[{limpia}]");                      // → [Lenguajes de Programación]
+Console.WriteLine(limpia.Length);                      // → 25
+Console.WriteLine(limpia.ToUpper());                   // → LENGUAJES DE PROGRAMACIÓN
+Console.WriteLine(limpia.Contains("Programa"));        // → True
+Console.WriteLine(limpia.StartsWith("Len"));           // → True
+Console.WriteLine(limpia.IndexOf("de"));               // → 10
+Console.WriteLine(limpia.Substring(13, 12));           // → Programación
+Console.WriteLine(limpia.Replace("Programación", "C#")); // → Lenguajes de C#
+Console.WriteLine(limpia);                             // → Lenguajes de Programación (no cambió)
+```
+
+> `IndexOf` y `Substring` se usan mucho juntos: primero localizas **dónde** está algo y luego **extraes** a partir de esa posición.
+
+```csharp
+string correo = "alumno@uptecamac.edu.mx";
+int arroba = correo.IndexOf('@');                  // → 6
+
+string usuario = correo.Substring(0, arroba);      // → alumno
+string dominio = correo.Substring(arroba + 1);     // → uptecamac.edu.mx
+```
+
+> ⚠️ `Substring` lanza `ArgumentOutOfRangeException` si `inicio + largo` se pasa de `Length`. Lo mismo ocurre con `s[i]` y un índice fuera de rango (`IndexOutOfRangeException`), igual que en los arreglos.
+
+#### Validar texto leído del usuario
+
+Lo que regresa `Console.ReadLine()` casi siempre conviene limpiarlo y validarlo antes de usarlo:
+
+```csharp
+Console.Write("Nombre: ");
+string entrada = Console.ReadLine() ?? "";
+
+if (string.IsNullOrWhiteSpace(entrada))
+{
+    Console.WriteLine("No escribiste nada");
+}
+else
+{
+    string nombre = entrada.Trim();
+    Console.WriteLine($"Hola, {nombre.ToUpper()} ({nombre.Length} letras)");
+}
+
+Console.Write("¿Deseas continuar? (si/no): ");
+string resp = (Console.ReadLine() ?? "").Trim().ToLower();   // los métodos se pueden encadenar
+if (resp == "si")
+    Console.WriteLine("Continuando…");
+```
+
+### 4.0.3. De cadena a arreglo y de vuelta
+
+Estos métodos son el **puente** entre el texto y los arreglos de la siguiente sección:
+
+| Miembro | Qué hace | Ejemplo | Resultado |
+|---|---|---|---|
+| `Split(sep)` | Divide la cadena en un **arreglo** de cadenas | `"a,b,c".Split(',')` | `{ "a", "b", "c" }` |
+| `ToCharArray()` | Convierte la cadena en un arreglo de `char` | `"abc".ToCharArray()` | `{ 'a', 'b', 'c' }` |
+| `string.Join(sep, arreglo)` | Une los elementos de un arreglo o lista en un solo texto | `string.Join("-", arr)` | `"a-b-c"` |
+| `new string(arregloChar)` | Crea una cadena a partir de un arreglo de `char` | `new string(letras)` | `"abc"` |
+
+```
+"85,92,78"  ──Split(',')──►  { "85", "92", "78" }  ──int.Parse──►  { 85, 92, 78 }
+  string                         string[]                              int[]
+```
+
+```csharp
+// Texto → arreglo de números
+string linea = "85,92,78";
+string[] partes = linea.Split(',');
+
+int[] calificaciones = new int[partes.Length];
+int suma = 0;
+for (int i = 0; i < partes.Length; i++)
+{
+    calificaciones[i] = int.Parse(partes[i]);
+    suma += calificaciones[i];
+}
+Console.WriteLine($"Suma: {suma}");                                     // → 255
+Console.WriteLine($"Promedio: {(double)suma / calificaciones.Length:F2}"); // → 85.00
+
+// Arreglo → texto
+Console.WriteLine(string.Join(" | ", calificaciones));                  // → 85 | 92 | 78
+```
+
+```csharp
+// Contar palabras: RemoveEmptyEntries ignora los espacios repetidos
+string texto = "  hola   mundo  cruel ";
+Console.WriteLine(texto.Split(' ').Length);                                     // → 11 ⚠️ cuenta los huecos vacíos
+Console.WriteLine(texto.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length); // → 3
+```
+
+#### Ejercicios clásicos con cadenas
+
+```csharp
+// 1. Invertir una cadena
+char[] letras = "Hola".ToCharArray();
+Array.Reverse(letras);
+string invertida = new string(letras);
+Console.WriteLine(invertida);                   // → aloH
+
+// 2. Contar vocales
+string palabra = "Programación".ToLower();
+int vocales = 0;
+foreach (char c in palabra)
+{
+    if ("aeiouáéíóú".Contains(c))
+        vocales++;
+}
+Console.WriteLine($"Vocales: {vocales}");       // → 5
+
+// 3. ¿Es palíndromo? (se lee igual al derecho y al revés)
+string original = "Anita lava la tina";
+string normal = original.ToLower().Replace(" ", "");
+char[] alReves = normal.ToCharArray();
+Array.Reverse(alReves);
+
+bool esPalindromo = normal == new string(alReves);
+Console.WriteLine(esPalindromo);                // → True
+```
+
+| Necesito… | Uso |
+|---|---|
+| Saber cuántos caracteres hay | `Length` |
+| Quitar espacios que escribió el usuario | `Trim()` |
+| Comparar sin importar mayúsculas | `ToLower()` en ambos, o `Equals(..., OrdinalIgnoreCase)` |
+| Saber si contiene algo / dónde está | `Contains` / `IndexOf` |
+| Extraer una parte | `Substring` |
+| Separar datos en un arreglo | `Split` |
+| Unir un arreglo en texto | `string.Join` |
+
+---
 
 ## 4.1. Arreglos (*arrays*)
 
